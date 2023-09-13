@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+
+  app:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./:/app
+
+  web:
+    image: caddy:2.7.4-alpine
+    volumes:
+      - ./build:/usr/share/caddy/:RO
+    ports:
+      - 127.0.0.1:8010:80
