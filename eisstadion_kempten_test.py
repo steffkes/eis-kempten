@@ -198,4 +198,119 @@ def test_03():
             "⛸️ Öffentlicher Lauf",
         ),
     ]
+
+
+def test_04():
+    with open("./tests/04.html") as file:
+        content = file.read()
+
+    assert extract(content) == [
+        (
+            datetime(2023, 9, 29, 14, 0),
+            datetime(2023, 9, 29, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 9, 30, 14, 0),
+            datetime(2023, 9, 30, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 1, 9, 45),
+            datetime(2023, 10, 1, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 1, 14, 0),
+            datetime(2023, 10, 1, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 3, 13, 45),
+            datetime(2023, 10, 3, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 4, 13, 45),
+            datetime(2023, 10, 4, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 6, 14, 0),
+            datetime(2023, 10, 6, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 7, 14, 0),
+            datetime(2023, 10, 7, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2023, 10, 7, 19, 45), datetime(2023, 10, 7, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2023, 10, 8, 9, 45),
+            datetime(2023, 10, 8, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 8, 14, 0),
+            datetime(2023, 10, 8, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 10, 13, 45),
+            datetime(2023, 10, 10, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 11, 13, 45),
+            datetime(2023, 10, 11, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 13, 14, 0),
+            datetime(2023, 10, 13, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 14, 14, 0),
+            datetime(2023, 10, 14, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2023, 10, 14, 19, 45), datetime(2023, 10, 14, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2023, 10, 15, 9, 45),
+            datetime(2023, 10, 15, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 15, 14, 0),
+            datetime(2023, 10, 15, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 17, 13, 45),
+            datetime(2023, 10, 17, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 18, 13, 45),
+            datetime(2023, 10, 18, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 20, 14, 0),
+            datetime(2023, 10, 20, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 21, 14, 0),
+            datetime(2023, 10, 21, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2023, 10, 21, 19, 0),
+            datetime(2023, 10, 21, 20, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+    ]
     ]
