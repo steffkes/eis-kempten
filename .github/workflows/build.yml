@@ -27,6 +27,9 @@ jobs:
       - name: run eisstadion
         run: python eisstadion_kempten.py
 
+      - name: run esc team
+        run: python esc_kempten_team.py
+
       - name: run esc
         run: python esc_kempten.py
 
