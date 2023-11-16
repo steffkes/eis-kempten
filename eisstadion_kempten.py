@@ -8,7 +8,7 @@ import re
 
 
 def transform(entry):
-    date = re.search(r">(\w+,\s+\d+[\.,]\s*\w+)\s+", entry)
+    date = re.search(r">\w+,(\s+\d+[\.,]\s*\w+)\s+", entry)
 
     if not date:
         return None
