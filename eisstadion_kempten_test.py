@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def test_01():
-    with open("./tests/01.html") as file:
+    with open("./tests/eisstadion-kempten/01.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -62,7 +62,7 @@ def test_01():
 
 
 def test_02():
-    with open("./tests/02.html") as file:
+    with open("./tests/eisstadion-kempten/02.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -111,7 +111,7 @@ def test_02():
 
 
 def test_03():
-    with open("./tests/03.html") as file:
+    with open("./tests/eisstadion-kempten/03.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -201,7 +201,7 @@ def test_03():
 
 
 def test_04():
-    with open("./tests/04.html") as file:
+    with open("./tests/eisstadion-kempten/04.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -316,7 +316,7 @@ def test_04():
 
 
 def test_05():
-    with open("./tests/05.html") as file:
+    with open("./tests/eisstadion-kempten/05.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -438,7 +438,7 @@ def test_05():
 
 
 def test_06():
-    with open("./tests/06.html") as file:
+    with open("./tests/eisstadion-kempten/06.html") as file:
         content = file.read()
 
     assert extract(content) == [
@@ -529,7 +529,7 @@ def test_06():
 
 
 def test_07():
-    with open("./tests/07.html") as file:
+    with open("./tests/eisstadion-kempten/07.html") as file:
         content = file.read()
 
     assert extract(content) == [
