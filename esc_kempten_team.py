@@ -8,6 +8,7 @@ import os
 import re
 
 participationMap = {"no": "DECLINED", "yes": "ACCEPTED", "maybe": "TENTATIVE"}
+iconMap = {"DECLINED": "❌", "ACCEPTED": "✔️", "TENTATIVE": "❔"}
 
 
 def transformer(state, item):
@@ -45,9 +46,10 @@ for time in (
         start="2023-09-28T15:45", end="2024-03-30T15:45", freq="W-THU"
     ).tolist()
 ):
+    description = []
+
     event = Event()
     event.add("summary", "🦈 Team Laufschule")
-    event.add("description", "Zuletzt aktualisiert: " + datetime.now().isoformat())
     event.add("dtstart", time)
     event.add("dtend", time + timedelta(hours=1))
     event.add("dtstamp", datetime.now())
@@ -56,12 +58,15 @@ for time in (
     )
     event.add("geo", vGeo((47.7445565, 10.3025167)))
 
-    for name, status in availability.get(time.isoformat(), {}).items():
+    for name, status in sorted(availability.get(time.isoformat(), {}).items()):
+        description.append(iconMap[status] + " " + name)
         attendee = vText("")
         attendee.params["cn"] = vText(name)
         attendee.params["PARTSTAT"] = vText(status)
         event.add("attendee", attendee, encode=0)
 
+    description.append("\nZuletzt aktualisiert: " + datetime.now().isoformat())
+    event.add("description", "\n".join(description))
     cal.add_component(event)
 
 os.makedirs("build/esc-kempten/", exist_ok=True)
