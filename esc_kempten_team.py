@@ -7,18 +7,18 @@ import pandas as pd
 import os
 import re
 
-participationMap = {"no": "DECLINED", "yes": "ACCEPTED", "maybe": "TENTATIVE"}
+participationMap = {"c_no___": "DECLINED", "a_yes__": "ACCEPTED"}
 iconMap = {"DECLINED": "❌", "ACCEPTED": "✔️", "TENTATIVE": "❔"}
 
 
 def transformer(state, item):
-    (_, reply, name, date) = item
+    (reply, name, date) = item
     date = dateparser.parse(date, settings={"TIMEZONE": "Europe/Berlin"}).isoformat()
 
     if date not in state:
         state[date] = {}
 
-    state[date][name] = participationMap[reply]
+    state[date][name] = participationMap.get(reply, "TENTATIVE")
 
     return state
 
@@ -26,7 +26,7 @@ def transformer(state, item):
 def extract(input):
     return reduce(
         transformer,
-        re.findall(r"vote (\w_([^_]+)_*)\" title=\"(.+?): (.+?)\"", input, re.DOTALL),
+        re.findall(r"vote (\w+)\" title=\"(.+?): (.+?)\"", input, re.DOTALL),
         {},
     )
 
