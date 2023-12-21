@@ -38,6 +38,8 @@ cal = Calendar()
 cal.add("version", "2.0")
 cal.add("prodid", "-//eis-kempten//esc-kempten.de//team-laufschule")
 
+cancelled_times = [pd.Timestamp("2023-12-28T15:45"), pd.Timestamp("2024-01-04T15:45")]
+
 for time in (
     pd.date_range(
         start="2023-09-23T09:00", end="2024-03-30T09:00", freq="W-SAT"
@@ -50,6 +52,7 @@ for time in (
 
     event = Event()
     event.add("summary", "🦈 Team Laufschule")
+    event.add("status", "CANCELLED" if time in cancelled_times else "CONFIRMED")
     event.add("dtstart", time)
     event.add("dtend", time + timedelta(hours=1))
     event.add("dtstamp", datetime.now())
