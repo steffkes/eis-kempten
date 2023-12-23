@@ -1,6 +1,5 @@
 from eisstadion_kempten import extract
 from datetime import datetime
-import dateparser
 
 
 def test_01():
@@ -9,7 +8,7 @@ def test_01():
 
     assert extract(
         content,
-        dateparser.parse("2023-09-11T18:14:00", settings={"TIMEZONE": "Europe/Berlin"}),
+        datetime.fromisoformat("2023-09-11T18:14:00"),
     ) == [
         (
             datetime(2023, 9, 26, 13, 45),
@@ -69,10 +68,7 @@ def test_02():
     with open("./tests/eisstadion-kempten/02.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-09-12T20:33:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-09-12T20:33:00")) == [
         (
             datetime(2023, 9, 29, 14, 0),
             datetime(2023, 9, 29, 15, 45),
@@ -121,10 +117,7 @@ def test_03():
     with open("./tests/eisstadion-kempten/03.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-09-29T21:25:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-09-29T21:25:00")) == [
         (
             datetime(2023, 9, 29, 14, 0),
             datetime(2023, 9, 29, 15, 45),
@@ -214,10 +207,7 @@ def test_04():
     with open("./tests/eisstadion-kempten/04.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-09-29T21:25:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-09-29T21:25:00")) == [
         (
             datetime(2023, 9, 29, 14, 0),
             datetime(2023, 9, 29, 15, 45),
@@ -332,10 +322,7 @@ def test_05():
     with open("./tests/eisstadion-kempten/05.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-10-11T21:41:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-10-11T21:41:00")) == [
         (
             datetime(2023, 10, 4, 13, 45),
             datetime(2023, 10, 4, 15, 30),
@@ -457,10 +444,7 @@ def test_06():
     with open("./tests/eisstadion-kempten/06.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-10-30T12:28:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-10-30T12:28:00")) == [
         (
             datetime(2023, 10, 21, 14, 0),
             datetime(2023, 10, 21, 15, 45),
@@ -551,10 +535,7 @@ def test_07():
     with open("./tests/eisstadion-kempten/07.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse("2023-11-16T10:49:00", settings={"TIMEZONE": "Europe/Berlin"}),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-11-16T10:49:00")) == [
         (
             datetime(2023, 11, 1, 13, 45),
             datetime(2023, 11, 1, 15, 30),
@@ -674,12 +655,7 @@ def test_08():
     with open("./tests/eisstadion-kempten/08.html") as file:
         content = file.read()
 
-    assert extract(
-        content,
-        dateparser.parse(
-            "2023-12-23-T10:44:00", settings={"TIMEZONE": "Europe/Berlin"}
-        ),
-    ) == [
+    assert extract(content, datetime.fromisoformat("2023-12-23T10:44:00")) == [
         (
             datetime(2023, 12, 19, 13, 45),
             datetime(2023, 12, 19, 15, 30),
