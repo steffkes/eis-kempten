@@ -1,19 +1,25 @@
 from icalendar import Calendar, Event, vGeo
 from datetime import datetime
 import dateparser
+import functools
 import itertools
 import requests
 import os
 import re
 
 
-def transform(entry):
+def transform(entry, ref_date):
     date = re.search(r">\w+,(\s+\d+[\.,]\s*\w+)\s+", entry)
 
     if not date:
         return None
 
     dt = dateparser.parse(date.groups(1)[0], settings={"TIMEZONE": "Europe/Berlin"})
+
+    # handle entries from the next year
+    # presumably those where the month is lower than what we currently have
+    if dt.month < ref_date.month:
+        dt = dt.replace(year=dt.year + 1)
 
     disco = re.search(r"Disco", entry, re.IGNORECASE)
 
@@ -29,12 +35,16 @@ def transform(entry):
     ]
 
 
-def extract(input):
+def extract(input, ref_date):
     match = re.search(
         r">Öffentlicher Lauf</[^>]+>\s+<div[^>]+>(.+?)</div>", input, re.DOTALL
     )
     dates = match.groups(1)[0].splitlines()
-    return list(itertools.chain.from_iterable(filter(None, map(transform, dates))))
+    return list(
+        itertools.chain.from_iterable(
+            filter(None, map(functools.partial(transform, ref_date=ref_date), dates))
+        )
+    )
 
 
 if __name__ == "__main__":
@@ -43,7 +53,7 @@ if __name__ == "__main__":
     cal.add("prodid", "-//eis-kempten//eisstadion-kempten.de//oeffentlicher-lauf")
 
     r = requests.get("https://www.eisstadion-kempten.de")
-    for start, end, description in extract(r.text):
+    for start, end, description in extract(r.text, datetime.now()):
         event = Event()
         event.add("summary", description)
         event.add("dtstart", start)
