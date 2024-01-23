@@ -66,6 +66,7 @@ if __name__ == "__main__":
         )
         event.add("geo", vGeo((47.7445565, 10.3025167)))
         event.add("description", updated_at)
+        event.add("url", "https://www.eisstadion-kempten.de/")
         cal.add_component(event)
 
     os.makedirs("build/eisstadion-kempten/", exist_ok=True)

@@ -70,6 +70,7 @@ for time in (
 
     description.append("\nZuletzt aktualisiert: " + datetime.now().isoformat())
     event.add("description", "\n".join(description))
+    event.add("url", "https://dud-poll.inf.tu-dresden.de/laufschule-kempten/")
     cal.add_component(event)
 
 os.makedirs("build/esc-kempten/", exist_ok=True)
