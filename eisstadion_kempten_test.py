@@ -786,3 +786,166 @@ def test_08():
             "⛸️ Öffentlicher Lauf",
         ),
     ]
+
+
+def test_09():
+    with open("./tests/eisstadion-kempten/09.html") as file:
+        content = file.read()
+
+    assert extract(content, datetime.fromisoformat("2024-01-24T16:56:00")) == [
+        (
+            datetime(2024, 1, 24, 13, 45),
+            datetime(2024, 1, 24, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 1, 26, 14, 0),
+            datetime(2024, 1, 26, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 1, 27, 14, 0),
+            datetime(2024, 1, 27, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2024, 1, 27, 19, 45), datetime(2024, 1, 27, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2024, 1, 28, 9, 45),
+            datetime(2024, 1, 28, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 1, 28, 14, 0),
+            datetime(2024, 1, 28, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 1, 30, 13, 45),
+            datetime(2024, 1, 30, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 1, 31, 13, 45),
+            datetime(2024, 1, 31, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 3, 14, 0),
+            datetime(2024, 2, 3, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2024, 2, 3, 19, 45), datetime(2024, 2, 3, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2024, 2, 4, 9, 45),
+            datetime(2024, 2, 4, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 4, 14, 0),
+            datetime(2024, 2, 4, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 6, 13, 45),
+            datetime(2024, 2, 6, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 7, 13, 45),
+            datetime(2024, 2, 7, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 9, 14, 0),
+            datetime(2024, 2, 9, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 3, 14, 0),
+            datetime(2024, 2, 3, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2024, 2, 10, 19, 45), datetime(2024, 2, 10, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2024, 2, 11, 9, 45),
+            datetime(2024, 2, 11, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 11, 14, 0),
+            datetime(2024, 2, 11, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 13, 13, 45),
+            datetime(2024, 2, 13, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 14, 13, 45),
+            datetime(2024, 2, 14, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 16, 14, 0),
+            datetime(2024, 2, 16, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 17, 14, 0),
+            datetime(2024, 2, 17, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2024, 2, 17, 19, 45), datetime(2024, 2, 17, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2024, 2, 18, 9, 45),
+            datetime(2024, 2, 18, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 18, 14, 0),
+            datetime(2024, 2, 18, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 20, 13, 45),
+            datetime(2024, 2, 20, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 21, 13, 45),
+            datetime(2024, 2, 21, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 23, 14, 0),
+            datetime(2024, 2, 23, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 24, 14, 0),
+            datetime(2024, 2, 24, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (datetime(2024, 2, 24, 19, 45), datetime(2024, 2, 24, 21, 30), "🪩 ICE-Disco"),
+        (
+            datetime(2024, 2, 25, 9, 45),
+            datetime(2024, 2, 25, 11, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 25, 14, 0),
+            datetime(2024, 2, 25, 15, 45),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 27, 13, 45),
+            datetime(2024, 2, 27, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+        (
+            datetime(2024, 2, 28, 13, 45),
+            datetime(2024, 2, 28, 15, 30),
+            "⛸️ Öffentlicher Lauf",
+        ),
+    ]

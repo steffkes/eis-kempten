@@ -16,6 +16,9 @@ def transform(entry, ref_date):
 
     dt = dateparser.parse(date.groups(1)[0], settings={"TIMEZONE": "Europe/Berlin"})
 
+    if not dt:
+        return None
+
     # handle entries from the next year
     # presumably those where the month is lower than what we currently have
     if dt.month < ref_date.month:
