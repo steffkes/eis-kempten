@@ -22,7 +22,9 @@ def transform(entry, ref_date):
     # handle entries from the next year
     # presumably those where the month is lower than what we currently have
     if dt.month < ref_date.month:
-        dt = dt.replace(year=dt.year + 1)
+        dt = dt.replace(year=ref_date.year + 1)
+    else:
+        dt = dt.replace(year=ref_date.year)
 
     disco = re.search(r"Disco", entry, re.IGNORECASE)
 
