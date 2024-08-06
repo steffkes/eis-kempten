@@ -1,14 +1,4 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//eis-kempten//eisstadion-kempten.de//oeffentlicher-lauf
-BEGIN:VEVENT
-SUMMARY:⛸️ Öffentlicher Lauf
-DTSTART:20240924T134500
-DTEND:20240924T153000
-DTSTAMP:20240729T140911Z
-DESCRIPTION:Zuletzt aktualisiert: 2024-07-29T14:09:07.997197
-GEO:47.7445565;10.3025167
-LOCATION:Eisstadion Kempten\, Memminger Str. 137\, 87439 Kempten (Allgäu)
-URL:https://www.eisstadion-kempten.de/
-END:VEVENT
 END:VCALENDAR
