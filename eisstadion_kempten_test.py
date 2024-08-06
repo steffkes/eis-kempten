@@ -949,3 +949,10 @@ def test_09():
             "⛸️ Öffentlicher Lauf",
         ),
     ]
+
+
+def test_10():
+    with open("./tests/eisstadion-kempten/10.html") as file:
+        content = file.read()
+
+    assert extract(content, datetime.fromisoformat("2024-08-06T21:45:00")) == []

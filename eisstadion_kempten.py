@@ -44,6 +44,10 @@ def extract(input, ref_date):
     match = re.search(
         r">Öffentlicher Lauf</[^>]+>\s+<div[^>]+>(.+?)</div>", input, re.DOTALL
     )
+
+    if not match:
+        return []
+
     dates = match.groups(1)[0].splitlines()
     return list(
         itertools.chain.from_iterable(
