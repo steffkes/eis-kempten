@@ -58,6 +58,23 @@ def extract(input, ref_date):
 
 updated_at = "Zuletzt aktualisiert: " + datetime.now().isoformat()
 
+
+def compute_event(start, end, description):
+    event = Event()
+    event.add("summary", description)
+    event.add("dtstart", start)
+    event.add("dtend", end)
+    event.add("dtstamp", datetime.now())
+    event.add(
+        "location", "Eisstadion Kempten, Memminger Str. 137, 87439 Kempten (Allgäu)"
+    )
+    event.add("geo", vGeo((47.7445565, 10.3025167)))
+    event.add("description", updated_at)
+    event.add("url", "https://www.eisstadion-kempten.de/")
+
+    return event
+
+
 if __name__ == "__main__":
     cal = Calendar()
     cal.add("version", "2.0")
@@ -65,18 +82,7 @@ if __name__ == "__main__":
 
     r = requests.get("https://www.eisstadion-kempten.de")
     for start, end, description in extract(r.text, datetime.now()):
-        event = Event()
-        event.add("summary", description)
-        event.add("dtstart", start)
-        event.add("dtend", end)
-        event.add("dtstamp", datetime.now())
-        event.add(
-            "location", "Eisstadion Kempten, Memminger Str. 137, 87439 Kempten (Allgäu)"
-        )
-        event.add("geo", vGeo((47.7445565, 10.3025167)))
-        event.add("description", updated_at)
-        event.add("url", "https://www.eisstadion-kempten.de/")
-        cal.add_component(event)
+        cal.add_component(compute_event(start, end, description))
 
     os.makedirs("build/eisstadion-kempten/", exist_ok=True)
     with open("build/eisstadion-kempten/oeffentlicher-lauf.ics", "wb") as file:
