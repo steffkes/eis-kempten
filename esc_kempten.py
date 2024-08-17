@@ -7,14 +7,16 @@ cal = Calendar()
 cal.add("version", "2.0")
 cal.add("prodid", "-//eis-kempten//esc-kempten.de//laufschule")
 
-cancelled_times = [pd.Timestamp("2023-12-28T15:45"), pd.Timestamp("2024-01-04T15:45")]
+cancelled_times = [
+    # pd.Timestamp("2023-12-28T15:45")
+]
 
 for time in (
     pd.date_range(
-        start="2023-09-23T09:00", end="2024-03-30T09:00", freq="W-SAT"
+        start="2024-09-28T09:00", end="2025-03-30T09:00", freq="W-SAT"
     ).tolist()
     + pd.date_range(
-        start="2023-09-28T15:45", end="2024-03-30T15:45", freq="W-THU"
+        start="2024-09-26T15:45", end="2025-03-28T15:45", freq="W-THU"
     ).tolist()
 ):
     event = Event()

@@ -1,5 +1,6 @@
 from icalendar import Calendar, Event, vGeo
-from datetime import datetime
+from datetime import datetime, timedelta
+import pandas as pd
 import dateparser
 import functools
 import itertools
@@ -83,6 +84,36 @@ if __name__ == "__main__":
     r = requests.get("https://www.eisstadion-kempten.de")
     for start, end, description in extract(r.text, datetime.now()):
         cal.add_component(compute_event(start, end, description))
+
+    for start in (
+        pd.date_range(
+            start="2024-09-24T13:45", end="2025-03-25T13:45", freq="W-TUE"
+        ).tolist()
+        + pd.date_range(
+            start="2024-09-25T13:45", end="2025-03-26T13:45", freq="W-WED"
+        ).tolist()
+        + pd.date_range(
+            start="2024-09-27T14:00", end="2025-03-28T14:00", freq="W-FRI"
+        ).tolist()
+        + pd.date_range(
+            start="2024-09-28T14:00", end="2025-03-29T14:00", freq="W-SAT"
+        ).tolist()
+        + pd.date_range(
+            start="2024-09-29T09:45", end="2025-03-30T09:45", freq="W-SUN"
+        ).tolist()
+        + pd.date_range(
+            start="2024-09-29T14:00", end="2025-03-30T14:00", freq="W-SUN"
+        ).tolist()
+    ):
+        cal.add_component(
+            compute_event(start, start + timedelta(minutes=105), "⛸️ Öffentlicher Lauf")
+        )
+    for start in pd.date_range(
+        start="2024-09-28T19:45", end="2025-03-29T19:45", freq="W-SAT"
+    ).tolist():
+        cal.add_component(
+            compute_event(start, start + timedelta(minutes=105), "🪩 ICE-Disco")
+        )
 
     os.makedirs("build/eisstadion-kempten/", exist_ok=True)
     with open("build/eisstadion-kempten/oeffentlicher-lauf.ics", "wb") as file:
