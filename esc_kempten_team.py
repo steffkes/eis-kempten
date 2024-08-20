@@ -7,6 +7,8 @@ import pandas as pd
 import os
 import re
 
+from esc_kempten import times, cancelled_times
+
 participationMap = {"c_no___": "DECLINED", "a_yes__": "ACCEPTED"}
 iconMap = {"DECLINED": "❌", "ACCEPTED": "✔️", "TENTATIVE": "❔"}
 
@@ -38,16 +40,7 @@ cal = Calendar()
 cal.add("version", "2.0")
 cal.add("prodid", "-//eis-kempten//esc-kempten.de//team-laufschule")
 
-cancelled_times = [pd.Timestamp("2023-12-28T15:45"), pd.Timestamp("2024-01-04T15:45")]
-
-for time in (
-    pd.date_range(
-        start="2023-09-23T09:00", end="2024-03-30T09:00", freq="W-SAT"
-    ).tolist()
-    + pd.date_range(
-        start="2023-09-28T15:45", end="2024-03-30T15:45", freq="W-THU"
-    ).tolist()
-):
+for time in times:
     description = []
 
     event = Event()
