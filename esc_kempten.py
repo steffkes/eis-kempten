@@ -3,6 +3,9 @@ from datetime import datetime, timedelta
 import pandas as pd
 import os
 
+from util import compute_event
+
+
 cal = Calendar()
 cal.add("version", "2.0")
 cal.add("prodid", "-//eis-kempten//esc-kempten.de//laufschule")
@@ -20,16 +23,9 @@ times = (
 )
 
 for time in times:
-    event = Event()
-    event.add("summary", "🦈 Laufschule")
+    event = compute_event(time, time + timedelta(hours=1), "🦈 Laufschule")
     event.add("status", "CANCELLED" if time in cancelled_times else "CONFIRMED")
-    event.add("dtstart", time)
-    event.add("dtend", time + timedelta(hours=1))
-    event.add("dtstamp", datetime.now())
-    event.add(
-        "location", "Eisstadion Kempten, Memminger Str. 137, 87439 Kempten (Allgäu)"
-    )
-    event.add("geo", vGeo((47.7445565, 10.3025167)))
+    event.add("url", "https://www.esc-kempten.de/laufschule/")
     cal.add_component(event)
 
 os.makedirs("build/esc-kempten/", exist_ok=True)

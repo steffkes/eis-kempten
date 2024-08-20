@@ -8,6 +8,8 @@ import requests
 import os
 import re
 
+from util import compute_event
+
 
 def transform(entry, ref_date):
     date = re.search(r">\w+,(\s+\d+[\.,]\s*\w+)\s+", entry)
@@ -57,21 +59,6 @@ def extract(input, ref_date):
     )
 
 
-def compute_event(start, end, description):
-    event = Event()
-    event.add("summary", description)
-    event.add("dtstart", start)
-    event.add("dtend", end)
-    event.add("dtstamp", datetime.now())
-    event.add(
-        "location", "Eisstadion Kempten, Memminger Str. 137, 87439 Kempten (Allgäu)"
-    )
-    event.add("geo", vGeo((47.7445565, 10.3025167)))
-    event.add("url", "https://www.eisstadion-kempten.de/")
-
-    return event
-
-
 if __name__ == "__main__":
     updated_at = "Zuletzt aktualisiert: " + datetime.now().isoformat()
 
@@ -80,8 +67,10 @@ if __name__ == "__main__":
     cal.add("prodid", "-//eis-kempten//eisstadion-kempten.de//oeffentlicher-lauf")
 
     r = requests.get("https://www.eisstadion-kempten.de")
-    for start, end, description in extract(r.text, datetime.now()):
-        cal.add_component(compute_event(start, end, description))
+    for start, end, summary in extract(r.text, datetime.now()):
+        event = compute_event(start, end, summary)
+        event.add("description", updated_at)
+        cal.add_component(evemt)
 
     for start in (
         pd.date_range(
