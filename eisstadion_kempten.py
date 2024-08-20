@@ -57,9 +57,6 @@ def extract(input, ref_date):
     )
 
 
-updated_at = "Zuletzt aktualisiert: " + datetime.now().isoformat()
-
-
 def compute_event(start, end, description):
     event = Event()
     event.add("summary", description)
@@ -70,13 +67,14 @@ def compute_event(start, end, description):
         "location", "Eisstadion Kempten, Memminger Str. 137, 87439 Kempten (Allgäu)"
     )
     event.add("geo", vGeo((47.7445565, 10.3025167)))
-    event.add("description", updated_at)
     event.add("url", "https://www.eisstadion-kempten.de/")
 
     return event
 
 
 if __name__ == "__main__":
+    updated_at = "Zuletzt aktualisiert: " + datetime.now().isoformat()
+
     cal = Calendar()
     cal.add("version", "2.0")
     cal.add("prodid", "-//eis-kempten//eisstadion-kempten.de//oeffentlicher-lauf")
@@ -105,15 +103,18 @@ if __name__ == "__main__":
             start="2024-09-29T14:00", end="2025-03-30T14:00", freq="W-SUN"
         ).tolist()
     ):
-        cal.add_component(
-            compute_event(start, start + timedelta(minutes=105), "⛸️ Öffentlicher Lauf")
+        event = compute_event(
+            start, start + timedelta(minutes=105), "⛸️ Öffentlicher Lauf"
         )
+        event.add("description", updated_at)
+        cal.add_component(event)
+
     for start in pd.date_range(
         start="2024-09-28T19:45", end="2025-03-29T19:45", freq="W-SAT"
     ).tolist():
-        cal.add_component(
-            compute_event(start, start + timedelta(minutes=105), "🪩 ICE-Disco")
-        )
+        event = compute_event(start, start + timedelta(minutes=105), "🪩 ICE-Disco")
+        event.add("description", updated_at)
+        cal.add_component(event)
 
     os.makedirs("build/eisstadion-kempten/", exist_ok=True)
     with open("build/eisstadion-kempten/oeffentlicher-lauf.ics", "wb") as file:
