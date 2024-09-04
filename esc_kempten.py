@@ -15,10 +15,10 @@ cancelled_times = [
 ]
 times = (
     pd.date_range(
-        start="2024-09-28T09:00", end="2025-03-30T09:00", freq="W-SAT"
+        start="2024-10-05T09:00", end="2025-03-30T09:00", freq="W-SAT"
     ).tolist()
     + pd.date_range(
-        start="2024-09-26T15:45", end="2025-03-28T15:45", freq="W-THU"
+        start="2024-10-10T15:45", end="2025-03-28T15:45", freq="W-THU"
     ).tolist()
 )
 
